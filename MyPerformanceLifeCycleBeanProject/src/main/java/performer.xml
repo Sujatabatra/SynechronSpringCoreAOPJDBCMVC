@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" default-init-method="fixingMike" default-destroy-method="disconnectMike">
+
+ 
+<bean id="Nilay" class="com.sujata.producer.Singer" init-method="checkMike" destroy-method="leaveStage" lazy-init="true">
+	<constructor-arg name="song" value="LALALA"></constructor-arg>
+</bean>
+
+<bean id="Avinash" class="com.sujata.producer.Singer" lazy-init="true">
+	<property name="song" value="Some Song"></property>
+</bean>
+
+<bean id="Sonu" class="com.sujata.producer.Juggler" lazy-init="true">
+	<property name="balls" value="6"></property>
+</bean>
+
+<bean id="myDancer" class="com.sujata.producer.Dancer" scope="prototype"></bean>
+</beans>

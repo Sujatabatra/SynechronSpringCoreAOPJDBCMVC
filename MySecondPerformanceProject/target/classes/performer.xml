@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<bean id="Nilay" class="com.sujata.producer.Singer">
+	<constructor-arg name="songs"> 
+		<list>
+			<value>First Song</value>
+			<value>I Beleive I can Fly</value>
+			<value>My Heart Goes On</value>
+			<value>I Beleive I can Fly</value>
+		</list>
+	</constructor-arg>
+</bean>
+ 
+
+<bean id="Keshav" class="com.sujata.producer.Juggler">
+	<constructor-arg name="thingsCount">
+		<map>
+			<entry key="balls" value="7"></entry>
+			<entry key="lemons" value="5"></entry>
+			<entry key="oranges" value="9"></entry>
+		</map>
+	</constructor-arg>
+</bean>
+
+<bean id="Parag" class="com.sujata.producer.Dancer">
+	<property name="songsStyle">
+		<props>
+			<prop key="Song1">Style1</prop>
+			<prop key="Song2">Style2</prop>
+			<prop key="Song3">Style3</prop>
+		</props>
+	</property>
+</bean>
+
+<bean id="guitar" class="com.sujata.producer.Guitar"></bean>
+<bean id="drum" class="com.sujata.producer.Drum"></bean>
+<bean id="tabla" class="com.sujata.producer.Tabla"></bean>
+
+
+
+
+<bean id="Avinash" class="com.sujata.producer.Instrumentalist">
+	<constructor-arg name="instruments">
+		<set>
+			<ref bean="guitar"/>
+			<ref bean="tabla"/>
+			<ref bean="drum"/>
+			</set>
+	</constructor-arg>
+</bean>
+</beans>
