@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd">
+
+<!-- 
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	<property name="url" value="jdbc:mysql://localhost:3306/synechrondb"></property>
+	<property name="username" value="root"></property>
+	<property name="password" value="sujata"></property>
+</bean>
+ -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" p:driverClassName="com.mysql.jdbc.Driver"
+p:url="jdbc:mysql://localhost:3306/synechrondb" p:username="root" p:password="sujata">
+</bean>
+
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" c:dataSource-ref="dataSource"></bean>
+<!--  
+<bean id="jdbcTemplate1" class="org.springframework.jdbc.core.JdbcTemplate" p:dataSource-ref="dataSource"></bean>
+
+<bean id="jdbcTemplate2" class="org.springframework.jdbc.core.JdbcTemplate">
+	<constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
+</bean>
+
+<bean id="jdbcTemplate3" class="org.springframework.jdbc.core.JdbcTemplate">
+	<property name="dataSource" ref="dataSource"></property>
+</bean>
+
+
+<bean id="jdbcTemplate4" class="org.springframework.jdbc.core.JdbcTemplate" autowire="byType">
+</bean>
+-->
+
+<bean id="itemDaoImpl" class="com.sujata.persistence.ItemDaoImpl" p:jdbcTemplate-ref="jdbcTemplate"></bean>
+
+<bean id="itemServiceImpl" class="com.sujata.service.ItemServiceImpl">
+	<property name="itemDao" ref="itemDaoImpl"></property>
+</bean>
+
+
+<bean id="itemUi" class="com.sujata.presentation.ItemUIImpl">
+	<property name="itemService" ref="itemServiceImpl"></property>
+</bean>
+
+
+</beans>
